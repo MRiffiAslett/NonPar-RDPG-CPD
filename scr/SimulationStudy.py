@@ -17,11 +17,7 @@ class SimulationStudy:
 
     @staticmethod
     def generate_graphon_matrix(num_nodes, latent_dim):
-       
-        
-        latent_positions = np.random.rand(num_nodes, latent_dim)
-
-        
+        latent_positions = np.random.rand(num_nodes, latent_dim) 
         graphon_matrix = latent_positions @ latent_positions.T
         graphon_matrix = np.clip(graphon_matrix, 0, 1)  
         np.fill_diagonal(graphon_matrix, 0)  
