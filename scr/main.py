@@ -1,4 +1,6 @@
-
+from SimulationStudy import SimulationStudy
+from RDPG import RDPG
+import numpy as np
 
 def run_change_point_detection(adjacency_matrices, latent_dim, num_intervals, delta, threshold):
     
