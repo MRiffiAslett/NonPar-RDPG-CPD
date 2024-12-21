@@ -17,13 +17,8 @@ if __name__ == "__main__":
         config_path = "config/enron_config.toml"
     elif dataset == "simulation":
         config_path = "config/simulation_config.toml"
-    else:
-        raise ValueError("Invalid dataset name. Choose 'enron' or 'simulation'.")
-
-    try:
-        config = toml.load(config_path)
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Config file not found at {config_path}")
+    
+    config = toml.load(config_path)
 
     if dataset == "enron":
         adjacency_matrices = load_enron_data()
