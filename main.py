@@ -1,8 +1,10 @@
-from RDPG import RDPG
-from enron import load_enron_data
-from SimulationStudy import SimulationStudy  
+import argparse
 import numpy as np
 import toml
+
+from RDPG import RDPG
+from enron import load_enron_data
+from SimulationStudy import SimulationStudy
 
 def run_change_point_detection(adjacency_matrices, latent_dim, num_intervals, delta, threshold):
     rdpg = RDPG(latent_dim)
@@ -10,19 +12,21 @@ def run_change_point_detection(adjacency_matrices, latent_dim, num_intervals, de
     intervals = rdpg.generate_random_intervals(num_intervals, 0, num_timepoints)
     return rdpg.detect_change_points(adjacency_matrices, intervals, d=latent_dim, delta=delta, threshold=threshold)
 
-dataset = "enron" 
+def main():
+    parser = argparse.ArgumentParser(description="Change Point Detection using RDPG")
+    parser.add_argument('--dataset', type=str, required=True, choices=['enron', 'simulation'], help='Dataset to use: enron or simulation')
+    args = parser.parse_args()
 
-if __name__ == "__main__":
-    if dataset == "enron":
+    if args.dataset == "enron":
         config_path = "config/enron_config.toml"
-    elif dataset == "simulation":
+    elif args.dataset == "simulation":
         config_path = "config/simulation_config.toml"
-    
+
     config = toml.load(config_path)
 
-    if dataset == "enron":
+    if args.dataset == "enron":
         adjacency_matrices = load_enron_data()
-    elif dataset == "simulation":
+    elif args.dataset == "simulation":
         simulation = SimulationStudy()
         adjacency_matrices = simulation.generate_simulated_data(
             num_nodes=config["simulation"]["num_nodes"],
@@ -39,4 +43,7 @@ if __name__ == "__main__":
         threshold=None if config["parameters"]["threshold"] == 'none' else config["parameters"]["threshold"]
     )
 
-    print(f"change points are {change_points[0]['S']}")
+    print(f"Change points are {change_points[0]['S']}")
+
+if __name__ == "__main__":
+    main()
