@@ -5,7 +5,7 @@ dataset = "simulation"
 latent_dim = 5
 num_intervals = 30
 delta = 5
-threshold = 0.1
+threshold = 'none'
 
 [simulation]
 num_nodes = 20
