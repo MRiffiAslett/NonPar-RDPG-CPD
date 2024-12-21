@@ -44,4 +44,4 @@ if __name__ == "__main__":
         threshold=None if config["parameters"]["threshold"] == 'none' else config["parameters"]["threshold"]
     )
 
-    print(change_points)
+    print(f"change points are {change_points[0]['S']}")
