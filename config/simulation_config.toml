@@ -1,14 +1,14 @@
-[run]
-dataset = "simulation"
+[run]  
+dataset = "simulation"  
 
-[parameters]
-latent_dim = 5
-num_intervals = 30
-delta = 5
-threshold = 'none'
+[parameters]  
+latent_dim = 70  
+num_intervals = 90  
+delta = 5  
+threshold = 'none'  
 
-[simulation]
-num_nodes = 20
-latent_dim = 5
-num_segments = 3
-num_samples_per_segment = 50
+[simulation]  
+num_nodes = 70  
+latent_dim = 70  
+num_segments = 3  
+num_samples_per_segment = 50  
