@@ -12,16 +12,6 @@ It includes the original simulation study in the paper as well as an implementat
 - **main.py** - Main script to run changepoint detection experiments.
 - **config/** - Configuration files for tuning parameters.
 
-## Getting Started
-
-### Prerequisites
-- Python 3.8+
-- Required packages:
-  - numpy
-  - scipy
-  - pandas
-  - requests
-  - toml
 
 ### Running the Code
 
